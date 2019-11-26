@@ -14,10 +14,9 @@ jobs:
         repository: biigle/core
         ref: dev-modules
         fetch-depth: 1
-        path: '.'
 
-    - name: Show directory
-      run: ls -lah
+    - name: Switch to core directory
+      run: cd ${GITHUB_WORKSPACE}/core
 
     - name: Validate composer.json and composer.lock
       run: composer validate
