@@ -35,8 +35,8 @@ jobs:
 
     - name: Fetch base images
       run: |
-        docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/app:latest
-        docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/worker:latest
+        docker pull docker.pkg.github.com/biigle/core/app:latest
+        docker pull docker.pkg.github.com/biigle/core/worker:latest
 
     - name: Start test database
       run: docker-compose up -d --no-build database_testing
