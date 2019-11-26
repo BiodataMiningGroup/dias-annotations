@@ -13,6 +13,10 @@ jobs:
       with:
         repository: biigle/core
         ref: dev-modules
+        fetch-depth: 1
+
+    - name: Show directory
+      run: ls -lah
 
     - name: Validate composer.json and composer.lock
       run: composer validate
