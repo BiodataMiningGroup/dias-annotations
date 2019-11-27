@@ -20,38 +20,29 @@ jobs:
         fetch-depth: 1
         path: core
 
-    - name: Check directory
-      run: pwd
-      working-directory: ../core
-
-    - name: Check directory
-      run: echo ${GITHUB_WORKSPACE}
-
-    - name: Check directory
-      run: find ${GITHUB_WORKSPACE} -type d
-
     - name: Validate composer.json and composer.lock
       run: composer validate
-      working-directory: core
+      working-directory: ../core
 
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      working-directory: ../core
 
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --ignore-platform-reqs
+      working-directory: ../core
 
     - name: Remove installed package
       run: rm -r vendor/${GITHUB_REPOSITORY}
+      working-directory: ../core
 
-    - name: Check directory
-      run: find ${GITHUB_WORKSPACE} -type d
-
-
-    - name: Check directory
-      run: find ${GITHUB_WORKSPACE} -type d
+    - name: Link current repository
+      run: ln -s ${GITHUB_WORKSPACE} vendor/${GITHUB_REPOSITORY}
+      working-directory: ../core
 
     - name: Generate key
       run: php artisan key:generate
+      working-directory: ../core
 
     - name: Docker login
       run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
@@ -65,6 +56,8 @@ jobs:
 
     - name: Start test database
       run: docker-compose up -d --no-build database_testing
+      working-directory: ../core
 
     - name: Run tests
       run: docker-compose run --rm -u 1001 worker php -d memory_limit=1G vendor/bin/phpunit --colors=always --random-order --filter 'Biigle\\Tests\\Modules\\Annotations'
+      working-directory: ../core
