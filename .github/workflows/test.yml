@@ -40,6 +40,9 @@ jobs:
       run: mv ${GITHUB_WORKSPACE} vendor/biigle
       working-directory: ../core
 
+    - name: Check directory
+      run: find $(dirname ${GITHUB_WORKSPACE}) -type d
+
     - name: Generate key
       run: php artisan key:generate
       working-directory: ../core
