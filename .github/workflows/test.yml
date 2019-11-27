@@ -61,13 +61,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - uses: actions/cache@v1
-      with:
-        path: /var/lib/docker/overlay2
-        key: ${{ runner.os }}-docker
-        restore-keys: |
-          ${{ runner.os }}-docker
-
     - name: Fetch base images
       run: |
         docker pull docker.pkg.github.com/biigle/core/app:latest
