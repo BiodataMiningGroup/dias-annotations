@@ -26,7 +26,7 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --ignore-platform-reqs
 
     - name: Remove installed package
-      run: rm -r ${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
+      run: rm -r ${GITHUB_WORKSPACE}/${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
 
     - uses: actions/checkout@v1
       with:
