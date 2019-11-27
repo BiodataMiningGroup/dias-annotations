@@ -20,6 +20,12 @@ jobs:
         fetch-depth: 1
         path: core
 
+    - name: Check directory
+      run: pwd
+
+    - name: Check directory
+      run: find ${GITHUB_WORKSPACE} -type d
+
     - name: Validate composer.json and composer.lock
       run: composer validate
       working-directory: core
