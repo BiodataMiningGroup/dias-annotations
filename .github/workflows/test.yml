@@ -41,7 +41,7 @@ jobs:
       working-directory: ../core
 
     - name: Check directory
-      run: find $(dirname ${GITHUB_WORKSPACE}) -type d
+      run: find -type d /home/runner
 
     - name: Generate key
       run: php artisan key:generate
