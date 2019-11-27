@@ -41,7 +41,7 @@ jobs:
       working-directory: ../core
 
     - name: Check directory
-      run: find -type d /home/runner
+      run: ls -lah
 
     - name: Generate key
       run: php artisan key:generate
