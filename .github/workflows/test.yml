@@ -29,7 +29,7 @@ jobs:
       run: rm -r vendor/${GITHUB_REPOSITORY}
 
     - name: Check directory
-      run: pwd
+      run: find ${GITHUB_WORKSPACE} -type d
 
     - uses: actions/checkout@v1
       with:
