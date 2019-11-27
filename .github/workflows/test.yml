@@ -24,6 +24,9 @@ jobs:
       run: pwd
 
     - name: Check directory
+      run: echo ${GITHUB_WORKSPACE}
+
+    - name: Check directory
       run: find ${GITHUB_WORKSPACE} -type d
 
     - name: Validate composer.json and composer.lock
