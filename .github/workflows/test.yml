@@ -31,7 +31,10 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
-        path: annotations/vendor/${GITHUB_REPOSITORY}
+        path: ${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
+
+    - name: Check directory
+      run: ls -lah
 
     - name: Generate key
       run: php artisan key:generate
