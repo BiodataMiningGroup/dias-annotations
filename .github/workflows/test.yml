@@ -40,7 +40,7 @@ jobs:
       run: cd ${GITHUB_WORKSPACE}
 
     - name: Check directory
-      run: pwd
+      run: find -type d ${GITHUB_WORKSPACE}
 
     - name: Generate key
       run: php artisan key:generate
