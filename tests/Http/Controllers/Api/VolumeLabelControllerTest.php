@@ -12,6 +12,8 @@ class VolumeLabelControllerTest extends ApiTestCase
 {
     public function testIndex()
     {
+        throw new \Exception("Error Processing Request", 1);
+
         $tid = $this->volume()->id;
 
         $label1 = LabelTest::create();
