@@ -36,12 +36,9 @@ jobs:
       run: rm -r vendor/${GITHUB_REPOSITORY}
       working-directory: ../core
 
-    - name: Move current repository
-      run: mv ${GITHUB_WORKSPACE} vendor/biigle
+    - name: Copy current repository
+      run: cp -r ${GITHUB_WORKSPACE} vendor/biigle
       working-directory: ../core
-
-    - name: Check directory
-      run: ls -lah
 
     - name: Generate key
       run: php artisan key:generate
