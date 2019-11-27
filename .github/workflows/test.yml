@@ -21,10 +21,8 @@ jobs:
         path: core
 
     - name: Check directory
-      run: cd $(dirname ${GITHUB_WORKSPACE})
-
-    - name: Check directory
       run: pwd
+      working-directory: ../core
 
     - name: Check directory
       run: echo ${GITHUB_WORKSPACE}
