@@ -23,9 +23,15 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
     - name: Install Dependencies
-      run: |
-        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --ignore-platform-reqs
-        composer require -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --ignore-platform-reqs ${GITHUB_REPOSITORY}:dev-${GITHUB_REF##*/}
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --ignore-platform-reqs
+
+    - name: Remove installed package
+      run: rm -r ${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
+
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+        path: ${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
 
     - name: Generate key
       run: php artisan key:generate
