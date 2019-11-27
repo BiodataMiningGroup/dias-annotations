@@ -39,6 +39,9 @@ jobs:
     - name: Check directory
       run: pwd
 
+    - name: Check directory
+      run: ls -lah ${GITHUB_WORKSPACE}
+
     - name: Generate key
       run: php artisan key:generate
 
