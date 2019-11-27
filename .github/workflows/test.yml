@@ -37,7 +37,7 @@ jobs:
       working-directory: ../core
 
     - name: Link current repository
-      run: ln -s ${GITHUB_WORKSPACE} vendor/${GITHUB_REPOSITORY}
+      run: ln ${GITHUB_WORKSPACE} vendor/${GITHUB_REPOSITORY}
       working-directory: ../core
 
     - name: Generate key
