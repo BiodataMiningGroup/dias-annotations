@@ -11,13 +11,18 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
+        fetch-depth: 1
+
+    - uses: actions/checkout@v1
+      with:
         repository: biigle/core
         ref: dev-modules
         fetch-depth: 1
-        path: annotations
+        path: core
 
     - name: Validate composer.json and composer.lock
       run: composer validate
+      working-directory: core
 
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -31,11 +36,6 @@ jobs:
     - name: Check directory
       run: find ${GITHUB_WORKSPACE} -type d
 
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-        clean: false
-        path: annotations/vendor/biigle/annotations
 
     - name: Check directory
       run: find ${GITHUB_WORKSPACE} -type d
