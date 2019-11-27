@@ -40,7 +40,7 @@ jobs:
       run: pwd
 
     - name: Check directory
-      run: ls -lah ${GITHUB_WORKSPACE}
+      run: tree -d ${GITHUB_WORKSPACE}
 
     - name: Generate key
       run: php artisan key:generate
