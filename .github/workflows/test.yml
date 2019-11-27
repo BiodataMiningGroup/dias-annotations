@@ -36,11 +36,11 @@ jobs:
         fetch-depth: 1
         path: ${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
 
-    - name: Check directory
-      run: pwd
+    - name: Change directory
+      run: cd ${GITHUB_WORKSPACE}
 
     - name: Check directory
-      run: tree -d ${GITHUB_WORKSPACE}
+      run: pwd
 
     - name: Generate key
       run: php artisan key:generate
