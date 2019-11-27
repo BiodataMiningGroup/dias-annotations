@@ -28,13 +28,16 @@ jobs:
     - name: Remove installed package
       run: rm -r vendor/${GITHUB_REPOSITORY}
 
+    - name: Check directory
+      run: pwd
+
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
         path: ${GITHUB_REPOSITORY#*/}/vendor/${GITHUB_REPOSITORY}
 
     - name: Check directory
-      run: ls -lah
+      run: pwd
 
     - name: Generate key
       run: php artisan key:generate
