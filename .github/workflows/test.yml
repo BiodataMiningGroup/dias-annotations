@@ -37,7 +37,7 @@ jobs:
       working-directory: ../core
 
     - name: Move current repository
-      run: echo mv ${GITHUB_WORKSPACE} vendor/${GITHUB_REPOSITORY}
+      run: mv ${GITHUB_WORKSPACE} vendor/biigle
       working-directory: ../core
 
     - name: Generate key
