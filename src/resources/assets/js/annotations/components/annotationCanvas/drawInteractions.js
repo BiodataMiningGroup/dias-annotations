@@ -4,25 +4,13 @@
  * @type {Object}
  */
 
-/**
- *
- * Return `true` if the event originates from a digital pen or the shift key is pressed.
- *
- * @param {import("../MapBrowserEvent.js").default} mapBrowserEvent Map browser event.
- * @return {boolean} True if the event originates from a digital pen or the shift key
- *         is pressed.
- * @api
- *
- */
-const penOrShift = function(mapBrowserEvent) {
-  const pointerEvt =
-    /** @type {import("../MapBrowserPointerEvent").default} */ (mapBrowserEvent).pointerEvent;
-  // see http://www.w3.org/TR/pointerevents/#widl-PointerEvent-pointerType
-  return pointerEvt.pointerType === "pen" || pointerEvt.shiftKey;
-};
-
 biigle.$component('annotations.components.annotationCanvas.drawInteractions', function () {
     var drawInteraction;
+
+    var penOrShift = function(mapBrowserEvent) {
+      var pointerEvt = (mapBrowserEvent).pointerEvent;
+      return pointerEvt.pointerType === "pen" || pointerEvt.shiftKey;
+    };
 
     return {
         computed: {
